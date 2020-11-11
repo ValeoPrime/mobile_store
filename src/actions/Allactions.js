@@ -2,19 +2,44 @@ import {
   FETCH_PHONE_START,
   FETCH_PHONE_SUCCESS,
   FETCH_PHONE_ERROR,
+  LOAD_MORE_PHONE_START,
+  LOAD_MORE_PHONE_SUCCESS,
+  LOAD_MORE_PHONE_ERROR
 } from '../actionTypes'
-import {fetchPhonesApi} from '../api/apiMetods'
+import {fetchPhonesApi, loadMorePhonesApi} from '../api/apiMetods'
+import {getRenderedPhonesLength} from '../selectors'
 
 export const fetchPhones = () => async (dispatch) => {
-    console.log('вызван');
   dispatch({type: FETCH_PHONE_START})
 
   try {
-    const allPhones = await fetchPhonesApi()
-    dispatch({type: FETCH_PHONE_SUCCESS, payload: allPhones})
+    await fetchPhonesApi().then(data=> {
+      const allPhonesObj = {}
+      data.forEach((phone) => {allPhonesObj[phone.id] = phone})
+      dispatch({type: FETCH_PHONE_SUCCESS, payload: allPhonesObj})
+    })
+    
+    
     
   } catch (e) {
     console.log(e)
     dispatch({type: FETCH_PHONE_ERROR, payload: e, error: true})
+  }
+}
+
+export const loadMorePhones = () => async (dispatch, getState) => {
+  const offset = getRenderedPhonesLength(getState())
+  dispatch({type: LOAD_MORE_PHONE_START})
+
+  try {
+    await loadMorePhonesApi({offset}).then(data=> {
+      const allPhonesObj = {}
+      data.forEach((phone) => {allPhonesObj[phone.id] = phone})
+      dispatch({type: LOAD_MORE_PHONE_SUCCESS, payload: allPhonesObj})
+    })
+
+  } catch (e) {
+    console.log(e)
+    dispatch({type: LOAD_MORE_PHONE_ERROR, payload: e, error: true})
   }
 }
