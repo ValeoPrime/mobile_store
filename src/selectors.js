@@ -27,3 +27,9 @@ export const getTotalBasketPrice = (state) => {
   total.forEach((item) => (totalPrice = totalPrice + item))
   return totalPrice
 }
+
+export const getCategories = state => Object.values(state.categories) 
+
+export const getActiveCategoryId = ownProps =>{
+  return ownProps?.match?.params?.id
+}

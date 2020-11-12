@@ -4,6 +4,7 @@ import phones from './phones'
 import phonesPages from './phonesPage'
 import phonePage from './phonePage'
 import basket from './basket'
+import categories from './categories'
 
 
 
@@ -13,6 +14,7 @@ export default history => {
         phonesPages,
         phonePage,
         basket,
+        categories,
         router: connectRouter(history)
         
     })

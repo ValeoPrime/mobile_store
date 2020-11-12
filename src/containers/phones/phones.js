@@ -7,7 +7,7 @@ import RenderPhone from './renderPhone/RenderPhone'
 import Layout from '../layout/layout'
 
 const Phones = (props) => {
-  console.log(props)
+  
   useEffect(() => {
     props.fetchPhones()
     props.fetchCategories()
