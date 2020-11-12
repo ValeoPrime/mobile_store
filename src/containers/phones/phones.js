@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import {connect} from 'react-redux'
 
-import {fetchPhones, loadMorePhones, addPhoneToBasket} from '../../actions/Allactions'
+import {fetchPhones, loadMorePhones, addPhoneToBasket, fetchCategories} from '../../actions/Allactions'
 import {getPhones} from '../../selectors'
 import RenderPhone from './renderPhone/RenderPhone'
 import Layout from '../layout/layout'
@@ -10,6 +10,7 @@ const Phones = (props) => {
   console.log(props)
   useEffect(() => {
     props.fetchPhones()
+    props.fetchCategories()
     // eslint-disable-next-line
   }, [])
 
@@ -41,6 +42,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   fetchPhones,
+  fetchCategories,
   loadMorePhones,
   addPhoneToBasket
 }

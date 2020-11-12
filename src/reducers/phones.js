@@ -3,7 +3,7 @@ import {
   FETCH_PHONE_SUCCESS,
   FETCH_PHONE_ERROR,
   LOAD_MORE_PHONE_SUCCESS,
-  FETCH_PHONES_BY_ID_SUCCESS
+  // FETCH_PHONES_BY_ID_SUCCESS
 } from '../actionTypes.js'
 
 const initialState = {}

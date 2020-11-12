@@ -3,9 +3,13 @@ export const getPhoneById = (state, id) => {
 }
 
 export const getPhones = (state) => {
-  const phones = state.phonesPages.telId.map((item) => {
+  let phones = state.phonesPages.telId.map((item) => {
     return getPhoneById(state, item)
   })
+  phones = phones.filter((phone) =>
+    phone.name.toLowerCase().includes(state.phonesPages.search.toLowerCase())
+  )
+
   return phones
 }
 
