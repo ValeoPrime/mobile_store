@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-const RenderPhone = ({phone, index}) => {
+const RenderPhone = ({phone, index, addPhoneToBasket}) => {
   
   const shortDescription = `${phone.description.slice(0, 60)}...`
   
@@ -16,7 +16,7 @@ const RenderPhone = ({phone, index}) => {
           </h4>
           <p>{shortDescription}</p>
           <p className="itemButton">
-            <button className="btn btn-primary">Buy Now!</button>
+            <button className="btn btn-primary" onClick={()=> {addPhoneToBasket(phone.id)}}>Buy Now!</button>
             <Link to={`/phone/${phone.id}`} className="btn btn-default">
               More info
             </Link>

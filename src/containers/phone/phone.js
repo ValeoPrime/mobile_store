@@ -2,11 +2,11 @@ import React, {useEffect} from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 
-import {fetchPhoneById} from '../../actions/Allactions'
+import {fetchPhoneById, addPhoneToBasket} from '../../actions/Allactions'
 import {getPhoneById} from '../../selectors'
+import BasketCart from '../../components/basketCard'
 
 const Phone = (props) => {
-  console.log('ПРОПСЫ ФОНА',props);
  
   useEffect(() => {
     const phoneId = props.match.params.id
@@ -75,7 +75,7 @@ const Phone = (props) => {
     return (
       <div>
         <p className='lead'>Quick shop</p>
-        {/* <BasketCart/> */}
+        <BasketCart/>
         <div className='form-group'>
           <h1>{phone.name}</h1>
           <h2>${phone.price}</h2>
@@ -118,6 +118,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   fetchPhoneById,
+  addPhoneToBasket
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Phone)

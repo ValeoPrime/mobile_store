@@ -7,7 +7,8 @@ import {
   LOAD_MORE_PHONE_ERROR,
   FETCH_PHONES_BY_ID_START,
   FETCH_PHONES_BY_ID_SUCCESS,
-  FETCH_PHONES_BY_ID_ERROR
+  FETCH_PHONES_BY_ID_ERROR,
+  ADD_PHONE_TO_BASKET
 
 } from '../actionTypes'
 import {fetchPhonesApi, loadMorePhonesApi, fetchPhoneByIdApi} from '../api/apiMetods'
@@ -62,3 +63,10 @@ export const fetchPhoneById = (phoneId) => async (dispatch) => {
     dispatch({type: FETCH_PHONES_BY_ID_ERROR, payload: e, error: true})
   }
 } 
+
+export const addPhoneToBasket = (phoneId) => (dispatch) => {
+  dispatch({
+    type: ADD_PHONE_TO_BASKET,
+    payload: phoneId
+  })
+}

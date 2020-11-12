@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import {connect} from 'react-redux'
 
-import {fetchPhones, loadMorePhones} from '../../actions/Allactions'
+import {fetchPhones, loadMorePhones, addPhoneToBasket} from '../../actions/Allactions'
 import {getPhones} from '../../selectors'
 import RenderPhone from './renderPhone/RenderPhone'
 import Layout from '../layout/layout'
@@ -13,12 +13,12 @@ const Phones = (props) => {
     // eslint-disable-next-line
   }, [])
 
-  const {phones, loadMorePhones} = props
+  const {phones, loadMorePhones, addPhoneToBasket} = props
   return (
     <Layout>
       <div className="books row">
         {phones.map((phone, index) => (
-          <RenderPhone phone={phone} index={index} key={index} />
+          <RenderPhone addPhoneToBasket = {addPhoneToBasket} phone={phone} index={index} key={index} />
         ))}
       </div>
       <div className="row">
@@ -41,7 +41,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   fetchPhones,
-  loadMorePhones
+  loadMorePhones,
+  addPhoneToBasket
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Phones)

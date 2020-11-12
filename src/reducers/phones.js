@@ -17,8 +17,8 @@ export default (state = initialState, {type, payload}) => {
       return state
     case LOAD_MORE_PHONE_SUCCESS:
       return {...state, allPhones: payload}
-    case FETCH_PHONES_BY_ID_SUCCESS:
-        return {...state, allPhones: payload}
+    // case FETCH_PHONES_BY_ID_SUCCESS:
+    //     return {...state, allPhones: payload}
     default:
       return state
   }

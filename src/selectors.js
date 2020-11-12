@@ -1,20 +1,25 @@
 export const getPhoneById = (state, id) => {
-    console.log('Упал стейт',state);
-    console.log('Упал айди',id);
-    return state.phones.allPhones[id]
+  return state.phones.allPhones[id]
 }
-
-
 
 export const getPhones = (state) => {
-    
-    const phones = state.phonesPages.telId.map(item => {
-       return getPhoneById(state, item)
-    })
-    return phones
-    
+  const phones = state.phonesPages.telId.map((item) => {
+    return getPhoneById(state, item)
+  })
+  return phones
 }
 
-export const getRenderedPhonesLength = state => {
-    return state.phonesPages.telId.length
+export const getRenderedPhonesLength = (state) => {
+  return state.phonesPages.telId.length
+}
+
+export const getTotalBasketCount = (state) => {
+  return state.basket.length
+}
+
+export const getTotalBasketPrice = (state) => {
+  let totalPrice = 0
+  const total = state.basket.map((item) => state.phones.allPhones[item].price)
+  total.forEach((item) => (totalPrice = totalPrice + item))
+  return totalPrice
 }
