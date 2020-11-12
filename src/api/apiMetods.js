@@ -11,3 +11,10 @@ export const loadMorePhonesApi = async ({offset}) => {
     resolve(phones)
   })
 }
+
+export const fetchPhoneByIdApi = async (id) => {
+  return new Promise(resolve => {
+    const phone = phones.find(phone => phone.id === id)
+    resolve(phone)
+  })
+}

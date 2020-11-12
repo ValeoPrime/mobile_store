@@ -3,6 +3,7 @@ import {
   FETCH_PHONE_SUCCESS,
   FETCH_PHONE_ERROR,
   LOAD_MORE_PHONE_SUCCESS,
+  FETCH_PHONES_BY_ID_SUCCESS
 } from '../actionTypes.js'
 
 const initialState = {}
@@ -16,6 +17,8 @@ export default (state = initialState, {type, payload}) => {
       return state
     case LOAD_MORE_PHONE_SUCCESS:
       return {...state, allPhones: payload}
+    case FETCH_PHONES_BY_ID_SUCCESS:
+        return {...state, allPhones: payload}
     default:
       return state
   }

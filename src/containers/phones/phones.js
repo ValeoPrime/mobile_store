@@ -15,7 +15,7 @@ const Phones = (props) => {
 
   const {phones, loadMorePhones} = props
   return (
-    <React.Fragment>
+    <Layout>
       <div className="books row">
         {phones.map((phone, index) => (
           <RenderPhone phone={phone} index={index} key={index} />
@@ -31,7 +31,7 @@ const Phones = (props) => {
           </button>
         </div>
       </div>
-    </React.Fragment>
+    </Layout>
   )
 }
 
