@@ -36,8 +36,8 @@ const Phones = (props) => {
   )
 }
 
-const mapStateToProps = (state) => ({
-  phones: getPhones(state),
+const mapStateToProps = (state, ownProps) => ({
+  phones: getPhones(state, ownProps),
 })
 
 const mapDispatchToProps = {

@@ -13,6 +13,8 @@ import {
   FETCH_CATEGORY_START,
   FETCH_CATEGORY_SUCCESS,
   FETCH_CATEGORY_ERROR,
+  REMOVE_PHONE_FROM_BASKET,
+  CLEAN_BASKET
 } from '../actionTypes'
 import {
   fetchPhonesApi,
@@ -103,4 +105,21 @@ export const searchPhone = (text) => (dispatch) => {
     type: SEARCH_PHONE,
     payload: text,
   })
+}
+
+export const removePhoneFromBasket = id => async dispatch => {
+  dispatch({
+    type: REMOVE_PHONE_FROM_BASKET,
+    payload: id
+  })
+}
+
+export const cleanBasket = () => async dispatch => {
+  dispatch({
+    type: CLEAN_BASKET
+  })
+}
+
+export const basketCheckout = phones => () => {
+  alert(JSON.stringify(phones))
 }
